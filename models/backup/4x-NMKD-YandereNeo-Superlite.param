@@ -1,0 +1,98 @@
+7767517
+96 165
+Input            data                     0 1 data
+Convolution      /Conv                    1 1 data /Conv_output_0 0=64 1=3 4=1 5=1 6=1728
+Split            splitncnn_0              1 8 /Conv_output_0 /Conv_output_0_splitncnn_0 /Conv_output_0_splitncnn_1 /Conv_output_0_splitncnn_2 /Conv_output_0_splitncnn_3 /Conv_output_0_splitncnn_4 /Conv_output_0_splitncnn_5 /Conv_output_0_splitncnn_6 /Conv_output_0_splitncnn_7
+Convolution      /Conv_1                  1 1 /Conv_output_0_splitncnn_7 /LeakyRelu_output_0 0=32 1=3 4=1 5=1 6=18432 9=2 -23310=1,2.000000e-01
+Split            splitncnn_1              1 4 /LeakyRelu_output_0 /LeakyRelu_output_0_splitncnn_0 /LeakyRelu_output_0_splitncnn_1 /LeakyRelu_output_0_splitncnn_2 /LeakyRelu_output_0_splitncnn_3
+Concat           /Concat                  2 1 /Conv_output_0_splitncnn_6 /LeakyRelu_output_0_splitncnn_3 /Concat_output_0
+Convolution      /Conv_2                  1 1 /Concat_output_0 /LeakyRelu_1_output_0 0=32 1=3 4=1 5=1 6=27648 9=2 -23310=1,2.000000e-01
+Split            splitncnn_2              1 3 /LeakyRelu_1_output_0 /LeakyRelu_1_output_0_splitncnn_0 /LeakyRelu_1_output_0_splitncnn_1 /LeakyRelu_1_output_0_splitncnn_2
+Concat           /Concat_1                3 1 /Conv_output_0_splitncnn_5 /LeakyRelu_output_0_splitncnn_2 /LeakyRelu_1_output_0_splitncnn_2 /Concat_1_output_0
+Convolution      /Conv_3                  1 1 /Concat_1_output_0 /LeakyRelu_2_output_0 0=32 1=3 4=1 5=1 6=36864 9=2 -23310=1,2.000000e-01
+Split            splitncnn_3              1 2 /LeakyRelu_2_output_0 /LeakyRelu_2_output_0_splitncnn_0 /LeakyRelu_2_output_0_splitncnn_1
+Concat           /Concat_2                4 1 /Conv_output_0_splitncnn_4 /LeakyRelu_output_0_splitncnn_1 /LeakyRelu_1_output_0_splitncnn_1 /LeakyRelu_2_output_0_splitncnn_1 /Concat_2_output_0
+Convolution      /Conv_4                  1 1 /Concat_2_output_0 /LeakyRelu_3_output_0 0=32 1=3 4=1 5=1 6=46080 9=2 -23310=1,2.000000e-01
+Concat           /Concat_3                5 1 /Conv_output_0_splitncnn_3 /LeakyRelu_output_0_splitncnn_0 /LeakyRelu_1_output_0_splitncnn_0 /LeakyRelu_2_output_0_splitncnn_0 /LeakyRelu_3_output_0 /Concat_3_output_0
+Convolution      /Conv_5                  1 1 /Concat_3_output_0 /Conv_5_output_0 0=64 1=3 4=1 5=1 6=110592
+Eltwise          /Add                     2 1 /Conv_5_output_0 /Conv_output_0_splitncnn_2 /Add_output_0 0=1 -23301=2,2.000000e-01,1.000000e+00
+Split            splitncnn_4              1 6 /Add_output_0 /Add_output_0_splitncnn_0 /Add_output_0_splitncnn_1 /Add_output_0_splitncnn_2 /Add_output_0_splitncnn_3 /Add_output_0_splitncnn_4 /Add_output_0_splitncnn_5
+Convolution      /Conv_6                  1 1 /Add_output_0_splitncnn_5 /LeakyRelu_4_output_0 0=32 1=3 4=1 5=1 6=18432 9=2 -23310=1,2.000000e-01
+Split            splitncnn_5              1 4 /LeakyRelu_4_output_0 /LeakyRelu_4_output_0_splitncnn_0 /LeakyRelu_4_output_0_splitncnn_1 /LeakyRelu_4_output_0_splitncnn_2 /LeakyRelu_4_output_0_splitncnn_3
+Concat           /Concat_4                2 1 /Add_output_0_splitncnn_4 /LeakyRelu_4_output_0_splitncnn_3 /Concat_4_output_0
+Convolution      /Conv_7                  1 1 /Concat_4_output_0 /LeakyRelu_5_output_0 0=32 1=3 4=1 5=1 6=27648 9=2 -23310=1,2.000000e-01
+Split            splitncnn_6              1 3 /LeakyRelu_5_output_0 /LeakyRelu_5_output_0_splitncnn_0 /LeakyRelu_5_output_0_splitncnn_1 /LeakyRelu_5_output_0_splitncnn_2
+Concat           /Concat_5                3 1 /Add_output_0_splitncnn_3 /LeakyRelu_4_output_0_splitncnn_2 /LeakyRelu_5_output_0_splitncnn_2 /Concat_5_output_0
+Convolution      /Conv_8                  1 1 /Concat_5_output_0 /LeakyRelu_6_output_0 0=32 1=3 4=1 5=1 6=36864 9=2 -23310=1,2.000000e-01
+Split            splitncnn_7              1 2 /LeakyRelu_6_output_0 /LeakyRelu_6_output_0_splitncnn_0 /LeakyRelu_6_output_0_splitncnn_1
+Concat           /Concat_6                4 1 /Add_output_0_splitncnn_2 /LeakyRelu_4_output_0_splitncnn_1 /LeakyRelu_5_output_0_splitncnn_1 /LeakyRelu_6_output_0_splitncnn_1 /Concat_6_output_0
+Convolution      /Conv_9                  1 1 /Concat_6_output_0 /LeakyRelu_7_output_0 0=32 1=3 4=1 5=1 6=46080 9=2 -23310=1,2.000000e-01
+Concat           /Concat_7                5 1 /Add_output_0_splitncnn_1 /LeakyRelu_4_output_0_splitncnn_0 /LeakyRelu_5_output_0_splitncnn_0 /LeakyRelu_6_output_0_splitncnn_0 /LeakyRelu_7_output_0 /Concat_7_output_0
+Convolution      /Conv_10                 1 1 /Concat_7_output_0 /Conv_10_output_0 0=64 1=3 4=1 5=1 6=110592
+Eltwise          /Add_1                   2 1 /Conv_10_output_0 /Add_output_0_splitncnn_0 /Add_1_output_0 0=1 -23301=2,2.000000e-01,1.000000e+00
+Split            splitncnn_8              1 6 /Add_1_output_0 /Add_1_output_0_splitncnn_0 /Add_1_output_0_splitncnn_1 /Add_1_output_0_splitncnn_2 /Add_1_output_0_splitncnn_3 /Add_1_output_0_splitncnn_4 /Add_1_output_0_splitncnn_5
+Convolution      /Conv_11                 1 1 /Add_1_output_0_splitncnn_5 /LeakyRelu_8_output_0 0=32 1=3 4=1 5=1 6=18432 9=2 -23310=1,2.000000e-01
+Split            splitncnn_9              1 4 /LeakyRelu_8_output_0 /LeakyRelu_8_output_0_splitncnn_0 /LeakyRelu_8_output_0_splitncnn_1 /LeakyRelu_8_output_0_splitncnn_2 /LeakyRelu_8_output_0_splitncnn_3
+Concat           /Concat_8                2 1 /Add_1_output_0_splitncnn_4 /LeakyRelu_8_output_0_splitncnn_3 /Concat_8_output_0
+Convolution      /Conv_12                 1 1 /Concat_8_output_0 /LeakyRelu_9_output_0 0=32 1=3 4=1 5=1 6=27648 9=2 -23310=1,2.000000e-01
+Split            splitncnn_10             1 3 /LeakyRelu_9_output_0 /LeakyRelu_9_output_0_splitncnn_0 /LeakyRelu_9_output_0_splitncnn_1 /LeakyRelu_9_output_0_splitncnn_2
+Concat           /Concat_9                3 1 /Add_1_output_0_splitncnn_3 /LeakyRelu_8_output_0_splitncnn_2 /LeakyRelu_9_output_0_splitncnn_2 /Concat_9_output_0
+Convolution      /Conv_13                 1 1 /Concat_9_output_0 /LeakyRelu_10_output_0 0=32 1=3 4=1 5=1 6=36864 9=2 -23310=1,2.000000e-01
+Split            splitncnn_11             1 2 /LeakyRelu_10_output_0 /LeakyRelu_10_output_0_splitncnn_0 /LeakyRelu_10_output_0_splitncnn_1
+Concat           /Concat_10               4 1 /Add_1_output_0_splitncnn_2 /LeakyRelu_8_output_0_splitncnn_1 /LeakyRelu_9_output_0_splitncnn_1 /LeakyRelu_10_output_0_splitncnn_1 /Concat_10_output_0
+Convolution      /Conv_14                 1 1 /Concat_10_output_0 /LeakyRelu_11_output_0 0=32 1=3 4=1 5=1 6=46080 9=2 -23310=1,2.000000e-01
+Concat           /Concat_11               5 1 /Add_1_output_0_splitncnn_1 /LeakyRelu_8_output_0_splitncnn_0 /LeakyRelu_9_output_0_splitncnn_0 /LeakyRelu_10_output_0_splitncnn_0 /LeakyRelu_11_output_0 /Concat_11_output_0
+Convolution      /Conv_15                 1 1 /Concat_11_output_0 /Conv_15_output_0 0=64 1=3 4=1 5=1 6=110592
+Eltwise          /Add_2                   2 1 /Conv_15_output_0 /Add_1_output_0_splitncnn_0 /Add_2_output_0 0=1 -23301=2,2.000000e-01,1.000000e+00
+Eltwise          /Add_3                   2 1 /Add_2_output_0 /Conv_output_0_splitncnn_1 /Add_3_output_0 0=1 -23301=2,2.000000e-01,1.000000e+00
+Split            splitncnn_12             1 7 /Add_3_output_0 /Add_3_output_0_splitncnn_0 /Add_3_output_0_splitncnn_1 /Add_3_output_0_splitncnn_2 /Add_3_output_0_splitncnn_3 /Add_3_output_0_splitncnn_4 /Add_3_output_0_splitncnn_5 /Add_3_output_0_splitncnn_6
+Convolution      /Conv_16                 1 1 /Add_3_output_0_splitncnn_6 /LeakyRelu_12_output_0 0=32 1=3 4=1 5=1 6=18432 9=2 -23310=1,2.000000e-01
+Split            splitncnn_13             1 4 /LeakyRelu_12_output_0 /LeakyRelu_12_output_0_splitncnn_0 /LeakyRelu_12_output_0_splitncnn_1 /LeakyRelu_12_output_0_splitncnn_2 /LeakyRelu_12_output_0_splitncnn_3
+Concat           /Concat_12               2 1 /Add_3_output_0_splitncnn_5 /LeakyRelu_12_output_0_splitncnn_3 /Concat_12_output_0
+Convolution      /Conv_17                 1 1 /Concat_12_output_0 /LeakyRelu_13_output_0 0=32 1=3 4=1 5=1 6=27648 9=2 -23310=1,2.000000e-01
+Split            splitncnn_14             1 3 /LeakyRelu_13_output_0 /LeakyRelu_13_output_0_splitncnn_0 /LeakyRelu_13_output_0_splitncnn_1 /LeakyRelu_13_output_0_splitncnn_2
+Concat           /Concat_13               3 1 /Add_3_output_0_splitncnn_4 /LeakyRelu_12_output_0_splitncnn_2 /LeakyRelu_13_output_0_splitncnn_2 /Concat_13_output_0
+Convolution      /Conv_18                 1 1 /Concat_13_output_0 /LeakyRelu_14_output_0 0=32 1=3 4=1 5=1 6=36864 9=2 -23310=1,2.000000e-01
+Split            splitncnn_15             1 2 /LeakyRelu_14_output_0 /LeakyRelu_14_output_0_splitncnn_0 /LeakyRelu_14_output_0_splitncnn_1
+Concat           /Concat_14               4 1 /Add_3_output_0_splitncnn_3 /LeakyRelu_12_output_0_splitncnn_1 /LeakyRelu_13_output_0_splitncnn_1 /LeakyRelu_14_output_0_splitncnn_1 /Concat_14_output_0
+Convolution      /Conv_19                 1 1 /Concat_14_output_0 /LeakyRelu_15_output_0 0=32 1=3 4=1 5=1 6=46080 9=2 -23310=1,2.000000e-01
+Concat           /Concat_15               5 1 /Add_3_output_0_splitncnn_2 /LeakyRelu_12_output_0_splitncnn_0 /LeakyRelu_13_output_0_splitncnn_0 /LeakyRelu_14_output_0_splitncnn_0 /LeakyRelu_15_output_0 /Concat_15_output_0
+Convolution      /Conv_20                 1 1 /Concat_15_output_0 /Conv_20_output_0 0=64 1=3 4=1 5=1 6=110592
+Eltwise          /Add_4                   2 1 /Conv_20_output_0 /Add_3_output_0_splitncnn_1 /Add_4_output_0 0=1 -23301=2,2.000000e-01,1.000000e+00
+Split            splitncnn_16             1 6 /Add_4_output_0 /Add_4_output_0_splitncnn_0 /Add_4_output_0_splitncnn_1 /Add_4_output_0_splitncnn_2 /Add_4_output_0_splitncnn_3 /Add_4_output_0_splitncnn_4 /Add_4_output_0_splitncnn_5
+Convolution      /Conv_21                 1 1 /Add_4_output_0_splitncnn_5 /LeakyRelu_16_output_0 0=32 1=3 4=1 5=1 6=18432 9=2 -23310=1,2.000000e-01
+Split            splitncnn_17             1 4 /LeakyRelu_16_output_0 /LeakyRelu_16_output_0_splitncnn_0 /LeakyRelu_16_output_0_splitncnn_1 /LeakyRelu_16_output_0_splitncnn_2 /LeakyRelu_16_output_0_splitncnn_3
+Concat           /Concat_16               2 1 /Add_4_output_0_splitncnn_4 /LeakyRelu_16_output_0_splitncnn_3 /Concat_16_output_0
+Convolution      /Conv_22                 1 1 /Concat_16_output_0 /LeakyRelu_17_output_0 0=32 1=3 4=1 5=1 6=27648 9=2 -23310=1,2.000000e-01
+Split            splitncnn_18             1 3 /LeakyRelu_17_output_0 /LeakyRelu_17_output_0_splitncnn_0 /LeakyRelu_17_output_0_splitncnn_1 /LeakyRelu_17_output_0_splitncnn_2
+Concat           /Concat_17               3 1 /Add_4_output_0_splitncnn_3 /LeakyRelu_16_output_0_splitncnn_2 /LeakyRelu_17_output_0_splitncnn_2 /Concat_17_output_0
+Convolution      /Conv_23                 1 1 /Concat_17_output_0 /LeakyRelu_18_output_0 0=32 1=3 4=1 5=1 6=36864 9=2 -23310=1,2.000000e-01
+Split            splitncnn_19             1 2 /LeakyRelu_18_output_0 /LeakyRelu_18_output_0_splitncnn_0 /LeakyRelu_18_output_0_splitncnn_1
+Concat           /Concat_18               4 1 /Add_4_output_0_splitncnn_2 /LeakyRelu_16_output_0_splitncnn_1 /LeakyRelu_17_output_0_splitncnn_1 /LeakyRelu_18_output_0_splitncnn_1 /Concat_18_output_0
+Convolution      /Conv_24                 1 1 /Concat_18_output_0 /LeakyRelu_19_output_0 0=32 1=3 4=1 5=1 6=46080 9=2 -23310=1,2.000000e-01
+Concat           /Concat_19               5 1 /Add_4_output_0_splitncnn_1 /LeakyRelu_16_output_0_splitncnn_0 /LeakyRelu_17_output_0_splitncnn_0 /LeakyRelu_18_output_0_splitncnn_0 /LeakyRelu_19_output_0 /Concat_19_output_0
+Convolution      /Conv_25                 1 1 /Concat_19_output_0 /Conv_25_output_0 0=64 1=3 4=1 5=1 6=110592
+Eltwise          /Add_5                   2 1 /Conv_25_output_0 /Add_4_output_0_splitncnn_0 /Add_5_output_0 0=1 -23301=2,2.000000e-01,1.000000e+00
+Split            splitncnn_20             1 6 /Add_5_output_0 /Add_5_output_0_splitncnn_0 /Add_5_output_0_splitncnn_1 /Add_5_output_0_splitncnn_2 /Add_5_output_0_splitncnn_3 /Add_5_output_0_splitncnn_4 /Add_5_output_0_splitncnn_5
+Convolution      /Conv_26                 1 1 /Add_5_output_0_splitncnn_5 /LeakyRelu_20_output_0 0=32 1=3 4=1 5=1 6=18432 9=2 -23310=1,2.000000e-01
+Split            splitncnn_21             1 4 /LeakyRelu_20_output_0 /LeakyRelu_20_output_0_splitncnn_0 /LeakyRelu_20_output_0_splitncnn_1 /LeakyRelu_20_output_0_splitncnn_2 /LeakyRelu_20_output_0_splitncnn_3
+Concat           /Concat_20               2 1 /Add_5_output_0_splitncnn_4 /LeakyRelu_20_output_0_splitncnn_3 /Concat_20_output_0
+Convolution      /Conv_27                 1 1 /Concat_20_output_0 /LeakyRelu_21_output_0 0=32 1=3 4=1 5=1 6=27648 9=2 -23310=1,2.000000e-01
+Split            splitncnn_22             1 3 /LeakyRelu_21_output_0 /LeakyRelu_21_output_0_splitncnn_0 /LeakyRelu_21_output_0_splitncnn_1 /LeakyRelu_21_output_0_splitncnn_2
+Concat           /Concat_21               3 1 /Add_5_output_0_splitncnn_3 /LeakyRelu_20_output_0_splitncnn_2 /LeakyRelu_21_output_0_splitncnn_2 /Concat_21_output_0
+Convolution      /Conv_28                 1 1 /Concat_21_output_0 /LeakyRelu_22_output_0 0=32 1=3 4=1 5=1 6=36864 9=2 -23310=1,2.000000e-01
+Split            splitncnn_23             1 2 /LeakyRelu_22_output_0 /LeakyRelu_22_output_0_splitncnn_0 /LeakyRelu_22_output_0_splitncnn_1
+Concat           /Concat_22               4 1 /Add_5_output_0_splitncnn_2 /LeakyRelu_20_output_0_splitncnn_1 /LeakyRelu_21_output_0_splitncnn_1 /LeakyRelu_22_output_0_splitncnn_1 /Concat_22_output_0
+Convolution      /Conv_29                 1 1 /Concat_22_output_0 /LeakyRelu_23_output_0 0=32 1=3 4=1 5=1 6=46080 9=2 -23310=1,2.000000e-01
+Concat           /Concat_23               5 1 /Add_5_output_0_splitncnn_1 /LeakyRelu_20_output_0_splitncnn_0 /LeakyRelu_21_output_0_splitncnn_0 /LeakyRelu_22_output_0_splitncnn_0 /LeakyRelu_23_output_0 /Concat_23_output_0
+Convolution      /Conv_30                 1 1 /Concat_23_output_0 /Conv_30_output_0 0=64 1=3 4=1 5=1 6=110592
+Eltwise          /Add_6                   2 1 /Conv_30_output_0 /Add_5_output_0_splitncnn_0 /Add_6_output_0 0=1 -23301=2,2.000000e-01,1.000000e+00
+Eltwise          /Add_7                   2 1 /Add_6_output_0 /Add_3_output_0_splitncnn_0 /Add_7_output_0 0=1 -23301=2,2.000000e-01,1.000000e+00
+Convolution      /Conv_31                 1 1 /Add_7_output_0 /Conv_31_output_0 0=64 1=3 4=1 5=1 6=36864
+BinaryOp         /Add_8                   2 1 /Conv_output_0_splitncnn_0 /Conv_31_output_0 /Add_8_output_0
+Interp           /Resize                  1 1 /Add_8_output_0 /Resize_output_0 0=1 1=2.000000e+00 2=2.000000e+00
+Convolution      /Conv_32                 1 1 /Resize_output_0 /LeakyRelu_24_output_0 0=64 1=3 4=1 5=1 6=36864 9=2 -23310=1,2.000000e-01
+Interp           /Resize_1                1 1 /LeakyRelu_24_output_0 /Resize_1_output_0 0=1 1=2.000000e+00 2=2.000000e+00
+Convolution      /Conv_33                 1 1 /Resize_1_output_0 /LeakyRelu_25_output_0 0=64 1=3 4=1 5=1 6=36864 9=2 -23310=1,2.000000e-01
+Convolution      /Conv_34                 1 1 /LeakyRelu_25_output_0 /LeakyRelu_26_output_0 0=64 1=3 4=1 5=1 6=36864 9=2 -23310=1,2.000000e-01
+Convolution      /Conv_35                 1 1 /LeakyRelu_26_output_0 output 0=3 1=3 4=1 5=1 6=1728 9=3 -23310=2,0.000000e+00,1.000000e+00
